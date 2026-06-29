@@ -1,0 +1,23 @@
+.up_btn {
+  background-color: white;
+  border: 3px solid var(--accent);
+  border-radius: 50px;
+  cursor: pointer;
+ 
+  margin-right: 10px;
+  padding: 10px;
+  position: fixed;
+  right: 0;
+  bottom: 170px;
+  width: 55px;
+  z-index: 999;
+
+  opacity: 0;                 // по умолчанию скрыта
+  pointer-events: none;       // нельзя нажать
+  transition: opacity 2s ease-in-out;
+}
+
+.visible {
+  opacity: 1;
+  pointer-events: auto;
+}

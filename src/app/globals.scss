@@ -1,0 +1,215 @@
+/* ===== Reset ===== */
+ @use "./mixins" as *;
+* {
+	padding: 0px;
+	margin: 0px;
+	border: none;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* Links */
+
+a, a:link, a:visited  {
+    text-decoration: none;
+}
+
+a:hover  {
+    text-decoration: none;
+}
+
+/* Common */
+
+aside, nav, footer, header, section, main {
+	display: block;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    font-size: inherit;
+	font-weight: inherit;
+}
+
+ul, ul li {
+	list-style: none;
+}
+
+img {
+	vertical-align: top;
+}
+
+img, svg {
+	max-width: 100%;
+	height: auto;
+}
+
+address {
+  font-style: normal;
+}
+
+/* Form */
+
+input, textarea, button, select {
+	font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background-color: transparent;
+}
+
+input::-ms-clear {
+	display: none;
+}
+
+button, input[type="submit"] {
+    display: inline-block;
+    box-shadow: none;
+    background-color: transparent;
+    background: none;
+    cursor: pointer;
+}
+
+input:focus, input:active,
+button:focus, button:active {
+    outline: none;
+}
+
+button::-moz-focus-inner {
+	padding: 0;
+	border: 0;
+}
+
+label {
+	cursor: pointer;
+}
+
+legend {
+	display: block;
+}
+
+/* =========================
+   Base variables
+========================= */
+
+:root {
+  --accent: #f16802;
+  --text-color: #171717;
+  --blue-dark: #00295a;
+  --blue: #003c7b;
+  --blue-soft:#e6eef7;
+  --orange: #f16802;
+  --orange-dark: #d05400;
+  --orange-soft: rgba(241, 104, 2, 0.15);
+  --muted: #64748b;
+  --background: linear-gradient(180deg, var(--blue-soft) 0%, #fff 100%);
+
+  --container-width: 1200px;
+  --container-padding: 15px;
+  --laptop-size: 1199px;
+  --tablet-size: 959px;
+  --mobile-size: 767px;
+
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --text-color: #ededed;
+  }
+}
+
+/* ===== Base ===== */
+
+html, body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  font-family: var(--font-main), sans-serif;
+//   background: var(--background);
+  color: var(--text-color);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.footer {
+    margin-top: auto;
+}
+
+/* ===== Utils ===== */
+
+.none {
+	display: none !important;
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	border: 0;
+	padding: 0;
+	white-space: nowrap;
+	clip-path: inset(100%);
+	clip: rect(0 0 0 0);
+	overflow: hidden;
+}
+
+.no-scroll {
+	overflow-y: hidden;
+}
+.small {
+	opacity: 1 !important;
+}
+
+//убрать стрелки из инпута, если он для цифр:
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none; 
+}
+
+input[type='number'],
+input[type="number"]:hover,
+input[type="number"]:focus {
+    appearance: none;
+    -moz-appearance: textfield;
+}
+
+.container {
+	padding: 0 var(--container-padding);
+	max-width: var(--container-width);
+	margin: 0 auto;
+    @include mobile470() {
+        padding: unset;
+    }
+}
+
+.container-right {
+	/* overflow-x: hidden; */
+	padding-left: calc(
+		(100% - var(--container-width)) / 2 + var(--container-padding)
+	);
+
+	@media (max-width: var(--laptop-size)) {
+		padding-left: var(--container-padding);
+	}
+}
+
+.container-left {
+	/* overflow-x: hidden; */
+	padding-right: calc(
+		(100% - var(--container-width)) / 2 + var(--container-padding)
+	);
+
+	@media (max-width: var(--laptop-size)) {
+		padding-right: var(--container-padding);
+	}
+}
+.ymaps-2-1-79-map-copyrights-promo, .ymaps-2-1-79-copyright {
+    visibility: hidden !important;
+    opacity: 0 !important;
+}

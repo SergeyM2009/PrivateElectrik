@@ -1,0 +1,29 @@
+@use "@/app/mixins" as *;
+
+.footer__right__block {
+    display: grid;
+    gap: 30px;
+    color: white;
+    margin-top: 40px;
+      @include mediaTablet768() {
+       gap: 30px;
+    }
+}
+.list__inline  {
+    display: flex;
+    justify-content: left;
+    gap: 20px;
+     @include mediaTablet768() {
+       gap: 10px;
+    }
+}
+.wdc__social .list__inline li a {
+    color: white;
+    font-size: 24px;
+    color: var(--accent);
+}
+.contacts__adress, .contacts__phone,.contacts__mail {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}

@@ -1,0 +1,123 @@
+ @use "../../app/mixins" as *;
+ @keyframes pulseDot {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+ .header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 9999;
+
+	&__row {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+	}
+
+}
+
+.header__right__block {
+	display: flex;
+  align-items: center;
+  gap: 20px;
+
+}
+.call {
+display: flex;
+align-items: center;
+gap: 15px;
+
+}
+.call__img {
+	font-size: 24px;
+     @include mobile470() {
+        display: none;
+    }
+}
+.call__img i {
+  color: var(--blue);
+}
+.call__content {
+	display: grid;
+	gap: 5px;
+}
+.call__content__text {
+	font-size: 13px;
+  color: var(--muted);
+  font-weight: 600;
+}
+.call__content__number {
+	font-weight: 700;
+	color: var(--accent);
+  white-space: nowrap;
+}
+.ready__wrapper {
+  display: flex;
+  align-items: center;
+    @include mediaTablet870() {
+    display: none;
+  }
+
+}
+.ready__wrapper  span {
+  display: inline-block;
+  content: "";
+  border-radius: 50%;
+  background-color: green;
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+  animation: pulseDot 2000ms ease-in-out infinite;
+}
+ .online__button {
+	background-color: var(--accent);
+	color: white;
+	font-weight: 700;
+	padding: 15px 20px;
+}
+.menu ul {
+  list-style-type: none;
+  padding: 30px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.menu a {
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-color);
+  opacity: 0.75;
+  display: block;
+  transition: background-color 0.3s;
+}
+
+.menu a::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #CE2524;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.menu a:hover::after {
+  transform: scaleX(1);
+}

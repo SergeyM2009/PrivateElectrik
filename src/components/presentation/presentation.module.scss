@@ -1,0 +1,53 @@
+ @use "../../app/mixins" as *;
+.highRow {
+    background-color: var(--blue);
+}
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    justify-content: space-around;
+    align-items: center;
+    row-gap: 15px;
+    padding: 10px;
+
+    @include mediaTablet870() {
+        grid-template-columns: repeat(2, auto);
+    }
+    @include mobile470() {
+        grid-template-columns: repeat(1, auto);
+    }
+}
+.wrapper div {
+    display: flex;   
+    align-items: center;
+    gap: 6px;
+    color: white;
+    font-weight: 500;
+}
+.highRow div span {
+    display: inline-flex;   
+}
+.main__cont {
+    position: relative;
+    width: 100%;
+    min-height: clamp(280px, 45vw, 450px);
+    overflow: hidden;
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+           background:
+            linear-gradient(
+                rgba(5, 25, 60, 0.2),
+                rgba(5, 25, 60, 0.65)
+            ),
+            rgba(0, 90, 180, 0.30);
+        z-index: 1;
+    }
+}
+
+.bg {
+    object-fit: cover;
+    object-position:top;
+    z-index: 0;
+}
