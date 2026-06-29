@@ -1,4 +1,18 @@
  @use "../../app/mixins" as *;
+
+ @keyframes pulseDot {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
 .highRow {
     background-color: var(--blue);
 }
@@ -30,24 +44,114 @@
 .main__cont {
     position: relative;
     width: 100%;
-    min-height: clamp(280px, 45vw, 450px);
     overflow: hidden;
-      &::before {
+
+    &::before {
         content: "";
         position: absolute;
         inset: 0;
-           background:
+        background:
             linear-gradient(
                 rgba(5, 25, 60, 0.2),
                 rgba(5, 25, 60, 0.65)
             ),
-            rgba(0, 90, 180, 0.30);
+            #005ab4a8;
         z-index: 1;
     }
 }
 
 .bg {
     object-fit: cover;
-    object-position:top;
+    object-position: top;
     z-index: 0;
+}
+
+.content {
+    position: relative;   // самое важное
+    z-index: 2;           // выше картинки и затемнения
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    min-height: inherit;
+}
+.left {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    gap: 15px;
+}
+.left__ready {
+    background: rgba(34, 197, 94, .18);
+    color: #03fd3b;
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(74, 222, 128, .35);
+    display: inline-flex;
+    align-items: center;
+    justify-self: self-start;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+.left__ready span {
+  display: inline-block;
+  content: "";
+  border-radius: 50%;
+  background-color: #03fd3b;
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+  margin-bottom: 2px;
+  animation: pulseDot 2000ms ease-in-out infinite;
+}
+.title, .title span {
+    font-size: 46px;
+    line-height: 1.12;
+    font-weight: 800;
+    letter-spacing: -.5px
+}
+.title {
+    color: white;
+}
+.title span {
+    color: var(--accent);
+}
+.lozung__icon {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  content: "";
+  border-radius: 50%;
+  background-color: var(--accent);
+  width: 32px;
+  height: 32px;
+}
+.lozung__wrapper div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 8px 14px 8px 10px;
+    background: rgba(255, 255, 255, .08);
+    border: 1px solid rgba(255, 255, 255, .16);
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    backdrop-filter: blur(6px);
+    max-width: 300px;
+}
+.lozung__wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    gap: 20px;
+   
+}
+.text {
+    color: rgba(255, 255, 255, .85);
+    font-size: 17px;
 }
