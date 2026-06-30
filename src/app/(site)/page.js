@@ -15,6 +15,21 @@ export default function Home() {
       <section className={styles.hero}>
     компонент 3
       </section>
+      <section className={styles.hero}>
+    компонент 3
+      </section>
+      <section className={styles.hero}>
+    компонент 3
+      </section>
+      <section className={styles.hero}>
+    компонент 3
+      </section>
+      <section className={styles.hero}>
+    компонент 3
+      </section>
+      <section className={styles.hero}>
+    компонент 3
+      </section>
 
     </main>
 

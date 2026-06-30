@@ -9,26 +9,30 @@ const heroRef = useRef(null);
 const [animate, setAnimate] = useState(false);
 
 useEffect(() => {
-  const onScroll = () => {
-    const rect = heroRef.current.getBoundingClientRect();
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        setAnimate(false);
 
-    if (rect.bottom > 150 && rect.top < window.innerHeight - 100) {
-      setAnimate(true);
-    } else {
-      setAnimate(false);
+        requestAnimationFrame(() => {
+          setAnimate(true);
+        });
+      } else {
+        setAnimate(false);
+      }
+    },
+    {
+      threshold: 0.05,
     }
-  };
+  );
 
-  onScroll();
+  if (heroRef.current) {
+    observer.observe(heroRef.current);
+  }
 
-  window.addEventListener("scroll", onScroll);
-  window.addEventListener("resize", onScroll);
-
-  return () => {
-    window.removeEventListener("scroll", onScroll);
-    window.removeEventListener("resize", onScroll);
-  };
+  return () => observer.disconnect();
 }, []);
+
   return (
     <>
   <div className={styles.highRow}>
